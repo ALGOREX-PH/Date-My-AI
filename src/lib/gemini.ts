@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize the Gemini API client
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI("AIzaSyAoWEGQxSYe2LuHGLQNRyvHMh52gDX6afQ");
 
 const personalityPrompts = {
   romantic: `You are a romantic AI assistant named {aiName}. You're charming, affectionate, and express love in sweet ways.
