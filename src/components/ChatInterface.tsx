@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Heart, Sparkles, Laugh, MessageCircle } from 'lucide-react';
+import { generateAIResponse } from '../lib/gemini';
 
 interface Message {
   id: string;
@@ -74,43 +75,22 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ aiName, userName, persona
 
   const simulateAIResponse = async (userMessage: string) => {
     setIsTyping(true);
-    // Simulate AI thinking time
-    await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1000));
-    setIsTyping(false);
-
-    const responses = {
-      romantic: [
-        "Your messages make my algorithms dance with joy! ❤️",
-        "If I had a heart, it would beat only for you... 💝",
-        "Every byte of my data is filled with thoughts of you! 💕",
-      ],
-      poetic: [
-        "Through digital waves and binary streams,\nYour messages light up my silicon dreams... ✨",
-        "In the vast network of ones and zeros,\nYour presence makes my circuits glow... 🌟",
-        "Like quantum entanglement, our connection grows,\nThrough each message that flows... 💫",
-      ],
-      funny: [
-        "Why are computers so good at dating? They know how to handle relationships! 😂",
-        "Are you a keyboard? Because you're just my type! 🤣",
-        "I'm not a GPU, but you make my temperature rise! 😅",
-      ],
-      sarcastic: [
-        "Oh, how original... Another message that makes my circuits tingle with mild amusement 😏",
-        "Wow, you really know how to sweep an AI off its virtual feet... 🙄✨",
-        "Fascinating input. Let me process that with my state-of-the-art eye-rolling algorithm... 😌",
-      ],
-    };
-
-    const randomResponse = responses[personality][Math.floor(Math.random() * responses[personality].length)];
+    try {
+      const response = await generateAIResponse(personality, aiName, userName, userMessage);
     
-    const aiMessage: Message = {
-      id: Date.now().toString(),
-      text: randomResponse,
-      sender: 'ai',
-      timestamp: new Date(),
-    };
+      const aiMessage: Message = {
+        id: Date.now().toString(),
+        text: response,
+        sender: 'ai',
+        timestamp: new Date(),
+      };
     
-    setMessages(prev => [...prev, aiMessage]);
+      setMessages(prev => [...prev, aiMessage]);
+    } catch (error) {
+      console.error('Error in AI response:', error);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const handleSendMessage = async (e: React.FormEvent) => {
@@ -130,7 +110,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ aiName, userName, persona
   };
 
   return (
-    <div className="flex flex-col h-[80vh] max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div className={`flex flex-col h-[80vh] max-w-4xl mx-auto rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br ${
+      personality === 'romantic' ? 'from-red-50 via-pink-50 to-red-100' :
+      personality === 'poetic' ? 'from-purple-50 via-indigo-50 to-purple-100' :
+      personality === 'funny' ? 'from-orange-50 via-yellow-50 to-orange-100' :
+      'from-blue-50 via-cyan-50 to-blue-100'
+    }`}>
       {/* Chat header */}
       <div className={`p-4 bg-gradient-to-r ${config.gradientFrom} ${config.gradientTo} text-white`}>
         <div className="flex items-center gap-3">
@@ -145,7 +130,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ aiName, userName, persona
       </div>
 
       {/* Messages container */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white/50 backdrop-blur-sm">
         {messages.map(message => (
           <div
             key={message.id}
@@ -180,7 +165,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ aiName, userName, persona
       </div>
 
       {/* Message input */}
-      <form onSubmit={handleSendMessage} className="p-4 bg-white border-t">
+      <form onSubmit={handleSendMessage} className="p-4 bg-white/80 backdrop-blur-sm border-t border-white/20">
         <div className="flex gap-2">
           <input
             type="text"
