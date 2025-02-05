@@ -39,10 +39,10 @@ const AIPersonalityCard: React.FC<AIPersonalityCardProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden group cursor-pointer transition-all duration-300 transform hover:-translate-y-2 ${
+      className={`relative overflow-hidden group cursor-pointer transition-all duration-300 transform hover:-translate-y-2 hover:scale-[1.02] ${
         selected
           ? 'bg-white/95 shadow-2xl scale-105'
-          : 'bg-white/80 shadow-xl hover:shadow-2xl'
+          : 'bg-white/80 shadow-xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]'
       } backdrop-blur-sm rounded-xl p-6`}
       onClick={onSelect}
     >
@@ -58,17 +58,17 @@ const AIPersonalityCard: React.FC<AIPersonalityCardProps> = ({
       {/* Content */}
       <div className="relative">
         <Icon className={`w-12 h-12 mb-4 ${iconColor}`} />
-        <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-gray-800 to-gray-600">{title}</h3>
+        <p className="text-gray-600 mb-4 font-light">{description}</p>
         
         {/* Preview message */}
-        <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-700">
+        <div className="bg-gradient-to-br from-gray-50 to-white rounded-lg p-4 text-sm text-gray-700 shadow-inner">
           <p className="italic">{preview}</p>
         </div>
 
         {/* Selection indicator */}
         {selected && (
-          <div className="absolute -top-2 -right-2 bg-green-500 text-white p-2 rounded-full shadow-lg">
+          <div className="absolute -top-2 -right-2 bg-gradient-to-br from-green-400 to-green-500 text-white p-2 rounded-full shadow-lg animate-pulse">
             <Heart className="w-4 h-4" />
           </div>
         )}
