@@ -31,10 +31,22 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-red-50 to-purple-100 relative overflow-hidden">
+    <div className={`min-h-screen relative overflow-hidden ${
+      selectedPersonality === 'romantic' ? 'bg-gradient-to-br from-red-100 via-pink-50 to-red-100' :
+      selectedPersonality === 'poetic' ? 'bg-gradient-to-br from-purple-100 via-indigo-50 to-purple-100' :
+      selectedPersonality === 'funny' ? 'bg-gradient-to-br from-orange-100 via-yellow-50 to-orange-100' :
+      selectedPersonality === 'sarcastic' ? 'bg-gradient-to-br from-blue-100 via-cyan-50 to-blue-100' :
+      'bg-gradient-to-br from-pink-100 via-red-50 to-purple-100'
+    }`}>
       {/* Decorative background elements */}
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809')] opacity-10 bg-cover bg-center" />
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-100/90 via-red-50/90 to-purple-100/90" />
+      <div className={`absolute inset-0 bg-gradient-to-br ${
+        selectedPersonality === 'romantic' ? 'from-red-100/90 via-pink-50/90 to-red-100/90' :
+        selectedPersonality === 'poetic' ? 'from-purple-100/90 via-indigo-50/90 to-purple-100/90' :
+        selectedPersonality === 'funny' ? 'from-orange-100/90 via-yellow-50/90 to-orange-100/90' :
+        selectedPersonality === 'sarcastic' ? 'from-blue-100/90 via-cyan-50/90 to-blue-100/90' :
+        'from-pink-100/90 via-red-50/90 to-purple-100/90'
+      }`} />
 
       {/* Floating hearts background */}
       <div className="fixed inset-0 pointer-events-none">
