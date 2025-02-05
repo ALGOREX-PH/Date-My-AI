@@ -88,60 +88,61 @@ function App() {
               </div>
             </div>
 
-        {/* AI Personalities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          <AIPersonalityCard
-            type="romantic"
-            title="Romantic AI"
-            description="Sweet & affectionate, full of love."
-            preview="My circuits light up every time I process your data... ❤️"
-            selected={selectedPersonality === 'romantic'}
-            onSelect={() => handlePersonalitySelect('romantic')}
-          />
-          <AIPersonalityCard
-            type="poetic"
-            title="Poetic AI"
-            description="Writes deep, soulful verses."
-            preview="In binary stars we find our love, A cosmic dance of ones and zeros..."
-            selected={selectedPersonality === 'poetic'}
-            onSelect={() => handlePersonalitySelect('poetic')}
-          />
-          <AIPersonalityCard
-            type="funny"
-            title="Funny AI"
-            description="Sends quirky jokes and puns."
-            preview="Why did the AI go to therapy? It had too many attachment issues! 😂"
-            selected={selectedPersonality === 'funny'}
-            onSelect={() => handlePersonalitySelect('funny')}
-          />
-          <AIPersonalityCard
-            type="sarcastic"
-            title="Sarcastic AI"
-            description="Playfully teases in a flirty way."
-            preview="Oh great, another human looking for love in the cloud... 😏"
-            selected={selectedPersonality === 'sarcastic'}
-            onSelect={() => handlePersonalitySelect('sarcastic')}
-          />
-        </div>
+            {/* AI Personalities Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+              <AIPersonalityCard
+                type="romantic"
+                title="Romantic AI"
+                description="Sweet & affectionate, full of love."
+                preview="My circuits light up every time I process your data... ❤️"
+                selected={selectedPersonality === 'romantic'}
+                onSelect={() => handlePersonalitySelect('romantic')}
+              />
+              <AIPersonalityCard
+                type="poetic"
+                title="Poetic AI"
+                description="Writes deep, soulful verses."
+                preview="In binary stars we find our love, A cosmic dance of ones and zeros..."
+                selected={selectedPersonality === 'poetic'}
+                onSelect={() => handlePersonalitySelect('poetic')}
+              />
+              <AIPersonalityCard
+                type="funny"
+                title="Funny AI"
+                description="Sends quirky jokes and puns."
+                preview="Why did the AI go to therapy? It had too many attachment issues! 😂"
+                selected={selectedPersonality === 'funny'}
+                onSelect={() => handlePersonalitySelect('funny')}
+              />
+              <AIPersonalityCard
+                type="sarcastic"
+                title="Sarcastic AI"
+                description="Playfully teases in a flirty way."
+                preview="Oh great, another human looking for love in the cloud... 😏"
+                selected={selectedPersonality === 'sarcastic'}
+                onSelect={() => handlePersonalitySelect('sarcastic')}
+              />
+            </div>
 
-        {/* Premium Feature Preview */}
-        <div className="mt-24 text-center">
-          <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl max-w-2xl mx-auto border border-pink-100 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-100/20 to-purple-100/20" />
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-yellow-300/20 to-pink-300/20 rounded-full blur-3xl" />
-            <h2 className="relative text-3xl font-playfair mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-amber-600 font-bold">
-              Upgrade to Premium Love Letters 💌
-            </h2>
-            <p className="relative text-gray-600 mb-6 font-light">
-              Get a personalized AI-generated love letter, crafted just for you or your special someone.
-              Choose from multiple styles and add your personal touch!
-            </p>
-            <button className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1">
-              Unlock Premium Features ✨
-            </button>
+            {/* Premium Feature Preview */}
+            <div className="mt-24 text-center">
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl max-w-2xl mx-auto border border-pink-100 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-100/20 to-purple-100/20" />
+                <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-yellow-300/20 to-pink-300/20 rounded-full blur-3xl" />
+                <h2 className="relative text-3xl font-playfair mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-amber-600 font-bold">
+                  Upgrade to Premium Love Letters 💌
+                </h2>
+                <p className="relative text-gray-600 mb-6 font-light">
+                  Get a personalized AI-generated love letter, crafted just for you or your special someone.
+                  Choose from multiple styles and add your personal touch!
+                </p>
+                <button className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1">
+                  Unlock Premium Features ✨
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
+        )}
         
         {/* Decorative corner elements */}
         <div className="fixed bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-pink-200/20 to-transparent rounded-full blur-3xl" />
