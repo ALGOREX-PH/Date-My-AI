@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, MessageCircleHeart as MessageHeart, Sparkles, Crown } from 'lucide-react';
+import { Heart, MessageCircleHeart as MessageHeart, Sparkles, Crown, Stars, Diamond } from 'lucide-react';
 import AIPersonalityCard from './components/AIPersonalityCard';
 import { useState } from 'react';
 
@@ -9,10 +9,17 @@ function App() {
   const [selectedPersonality, setSelectedPersonality] = useState<AIPersonality>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-red-50 to-purple-100">
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 via-red-50 to-purple-100 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809')] opacity-10 bg-cover bg-center" />
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-100/90 via-red-50/90 to-purple-100/90" />
+
       {/* Floating hearts background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 overflow-hidden">
+          <div className="animate-float-slow absolute top-1/6 left-1/6">
+            <Stars className="w-12 h-12 text-yellow-300/30" />
+          </div>
           <div className="animate-float-slow absolute top-1/4 left-1/4">
             <Heart className="w-8 h-8 text-pink-200" />
           </div>
@@ -22,24 +29,30 @@ function App() {
           <div className="animate-float-fast absolute bottom-1/4 right-1/4">
             <Heart className="w-10 h-10 text-red-200" />
           </div>
+          <div className="animate-float absolute bottom-1/3 left-1/3">
+            <Diamond className="w-8 h-8 text-pink-300/40" />
+          </div>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 relative">
         {/* Hero section */}
         <div className="text-center mb-16">
-          <div className="flex justify-center mb-4">
+          <div className="relative flex justify-center mb-4">
             <MessageHeart className="w-16 h-16 text-red-500" />
+            <div className="absolute inset-0 animate-pulse-slow">
+              <MessageHeart className="w-16 h-16 text-red-400 blur-sm" />
+            </div>
           </div>
-          <h1 className="text-5xl font-playfair mb-4 text-gray-800">
+          <h1 className="text-6xl font-playfair mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 font-bold">
             Let AI Be Your Valentine for a Day! 💕
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
             Pick your AI's personality & get cute, funny, or poetic messages all day.
             Upgrade for a personalized AI love letter!
           </p>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold shadow-[0_0_20px_rgba(244,63,94,0.3)] hover:shadow-[0_0_30px_rgba(244,63,94,0.5)] transition-all transform hover:-translate-y-1 cursor-pointer">
             <Crown className="w-5 h-5" />
             Start Your AI Valentine Experience Now!
           </div>
@@ -83,19 +96,25 @@ function App() {
 
         {/* Premium Feature Preview */}
         <div className="mt-24 text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl max-w-2xl mx-auto border border-pink-100">
-            <h2 className="text-3xl font-playfair mb-4 text-gray-800">
+          <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl max-w-2xl mx-auto border border-pink-100 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-100/20 to-purple-100/20" />
+            <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-yellow-300/20 to-pink-300/20 rounded-full blur-3xl" />
+            <h2 className="relative text-3xl font-playfair mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-amber-600 font-bold">
               Upgrade to Premium Love Letters 💌
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className="relative text-gray-600 mb-6 font-light">
               Get a personalized AI-generated love letter, crafted just for you or your special someone.
               Choose from multiple styles and add your personal touch!
             </p>
-            <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+            <button className="relative bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)] transition-all transform hover:-translate-y-1">
               Unlock Premium Features ✨
             </button>
           </div>
         </div>
+        
+        {/* Decorative corner elements */}
+        <div className="fixed bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-pink-200/20 to-transparent rounded-full blur-3xl" />
+        <div className="fixed top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-200/20 to-transparent rounded-full blur-3xl" />
       </div>
     </div>
   );
