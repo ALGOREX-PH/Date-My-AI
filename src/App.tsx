@@ -2,6 +2,7 @@ import React from 'react';
 import { Heart, MessageCircleHeart as MessageHeart, Sparkles, Crown, Stars, Diamond } from 'lucide-react';
 import AIPersonalityCard from './components/AIPersonalityCard';
 import SetupDialog from './components/SetupDialog';
+import ChatInterface from './components/ChatInterface';
 import { useState } from 'react';
 
 type AIPersonality = 'romantic' | 'poetic' | 'funny' | 'sarcastic' | null;
@@ -58,26 +59,34 @@ function App() {
 
       {/* Main content */}
       <div className="container mx-auto px-4 py-12 relative">
-        {/* Hero section */}
-        <div className="text-center mb-16">
-          <div className="relative flex justify-center mb-4">
-            <MessageHeart className="w-16 h-16 text-red-500" />
-            <div className="absolute inset-0 animate-pulse-slow">
-              <MessageHeart className="w-16 h-16 text-red-400 blur-sm" />
+        {setupData && selectedPersonality ? (
+          <ChatInterface
+            aiName={setupData.aiName}
+            userName={setupData.userName}
+            personality={selectedPersonality}
+          />
+        ) : (
+          <div>
+            {/* Hero section */}
+            <div className="text-center mb-16">
+              <div className="relative flex justify-center mb-4">
+                <MessageHeart className="w-16 h-16 text-red-500" />
+                <div className="absolute inset-0 animate-pulse-slow">
+                  <MessageHeart className="w-16 h-16 text-red-400 blur-sm" />
+                </div>
+              </div>
+              <h1 className="text-6xl font-playfair mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 font-bold">
+                Let AI Be Your Valentine for a Day! 💕
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+                Pick your AI's personality & get cute, funny, or poetic messages all day.
+                Upgrade for a personalized AI love letter!
+              </p>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold shadow-[0_0_20px_rgba(244,63,94,0.3)] hover:shadow-[0_0_30px_rgba(244,63,94,0.5)] transition-all transform hover:-translate-y-1 cursor-pointer">
+                <Crown className="w-5 h-5" />
+                Start Your AI Valentine Experience Now!
+              </div>
             </div>
-          </div>
-          <h1 className="text-6xl font-playfair mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 font-bold">
-            Let AI Be Your Valentine for a Day! 💕
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
-            Pick your AI's personality & get cute, funny, or poetic messages all day.
-            Upgrade for a personalized AI love letter!
-          </p>
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold shadow-[0_0_20px_rgba(244,63,94,0.3)] hover:shadow-[0_0_30px_rgba(244,63,94,0.5)] transition-all transform hover:-translate-y-1 cursor-pointer">
-            <Crown className="w-5 h-5" />
-            Start Your AI Valentine Experience Now!
-          </div>
-        </div>
 
         {/* AI Personalities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -132,6 +141,7 @@ function App() {
             </button>
           </div>
         </div>
+      )}
         
         {/* Decorative corner elements */}
         <div className="fixed bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-pink-200/20 to-transparent rounded-full blur-3xl" />
