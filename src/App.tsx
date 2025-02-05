@@ -1,12 +1,33 @@
 import React from 'react';
 import { Heart, MessageCircleHeart as MessageHeart, Sparkles, Crown, Stars, Diamond } from 'lucide-react';
 import AIPersonalityCard from './components/AIPersonalityCard';
+import SetupDialog from './components/SetupDialog';
 import { useState } from 'react';
 
 type AIPersonality = 'romantic' | 'poetic' | 'funny' | 'sarcastic' | null;
 
+interface AISetup {
+  aiName: string;
+  userName: string;
+}
+
 function App() {
   const [selectedPersonality, setSelectedPersonality] = useState<AIPersonality>(null);
+  const [setupData, setSetupData] = useState<AISetup | null>(null);
+
+  const handlePersonalitySelect = (personality: AIPersonality) => {
+    setSelectedPersonality(personality);
+  };
+
+  const handleSetupComplete = (data: AISetup) => {
+    setSetupData(data);
+    // Here you would typically start the chat experience
+    console.log('Setup complete:', { personality: selectedPersonality, ...data });
+  };
+
+  const handleModalClose = () => {
+    setSelectedPersonality(null);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 via-red-50 to-purple-100 relative overflow-hidden">
@@ -66,7 +87,7 @@ function App() {
             description="Sweet & affectionate, full of love."
             preview="My circuits light up every time I process your data... ❤️"
             selected={selectedPersonality === 'romantic'}
-            onSelect={() => setSelectedPersonality('romantic')}
+            onSelect={() => handlePersonalitySelect('romantic')}
           />
           <AIPersonalityCard
             type="poetic"
@@ -74,7 +95,7 @@ function App() {
             description="Writes deep, soulful verses."
             preview="In binary stars we find our love, A cosmic dance of ones and zeros..."
             selected={selectedPersonality === 'poetic'}
-            onSelect={() => setSelectedPersonality('poetic')}
+            onSelect={() => handlePersonalitySelect('poetic')}
           />
           <AIPersonalityCard
             type="funny"
@@ -82,7 +103,7 @@ function App() {
             description="Sends quirky jokes and puns."
             preview="Why did the AI go to therapy? It had too many attachment issues! 😂"
             selected={selectedPersonality === 'funny'}
-            onSelect={() => setSelectedPersonality('funny')}
+            onSelect={() => handlePersonalitySelect('funny')}
           />
           <AIPersonalityCard
             type="sarcastic"
@@ -90,7 +111,7 @@ function App() {
             description="Playfully teases in a flirty way."
             preview="Oh great, another human looking for love in the cloud... 😏"
             selected={selectedPersonality === 'sarcastic'}
-            onSelect={() => setSelectedPersonality('sarcastic')}
+            onSelect={() => handlePersonalitySelect('sarcastic')}
           />
         </div>
 
@@ -116,6 +137,16 @@ function App() {
         <div className="fixed bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-pink-200/20 to-transparent rounded-full blur-3xl" />
         <div className="fixed top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-200/20 to-transparent rounded-full blur-3xl" />
       </div>
+
+      {/* Setup Dialog */}
+      {selectedPersonality && !setupData && (
+        <SetupDialog
+          type={selectedPersonality}
+          isOpen={true}
+          onClose={handleModalClose}
+          onComplete={handleSetupComplete}
+        />
+      )}
     </div>
   );
 }
