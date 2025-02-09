@@ -87,17 +87,24 @@ function App() {
                   <MessageHeart className="w-16 h-16 text-red-400 blur-sm" />
                 </div>
               </div>
+              
               <h1 className="text-6xl font-playfair mb-4 text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 font-bold">
                 Let AI Be Your Valentine for a Day! 💕
               </h1>
+              
               <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
                 Pick your AI's personality & get cute, funny, or poetic messages all day.
                 Upgrade for a personalized AI love letter!
               </p>
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold shadow-[0_0_20px_rgba(244,63,94,0.3)] hover:shadow-[0_0_30px_rgba(244,63,94,0.5)] transition-all transform hover:-translate-y-1 cursor-pointer">
-                <Crown className="w-5 h-5" />
-                Start Your AI Valentine Experience Now!
-              </div>
+              <div className="text-center space-y-8">
+            <div className="mb-12">
+              <img 
+                src="https://raw.githubusercontent.com/ALGOREX-PH/Arcana-AI/refs/heads/main/src/images/Copy%20of%20GDG%20On%20Campus%20-%20Centered%20-%20Template.png" 
+                alt="Google Developer Groups On Campus - Mapúa University Manila" 
+                className="h-24 mx-auto"
+              />
+            </div>
+            </div>
             </div>
 
             {/* AI Personalities Grid */}
