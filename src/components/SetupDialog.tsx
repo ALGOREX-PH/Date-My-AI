@@ -7,7 +7,12 @@ interface SetupDialogProps {
   onClose: () => void;
   onComplete: (data: { aiName: string; userName: string }) => void;
 }
+/*
 
+Coded by Danielle Bagaforo Meer
+Lets Connect : https://www.linkedin.com/in/algorexph
+
+*/
 const typeDetails = {
   romantic: {
     title: 'Your Romantic AI Partner',

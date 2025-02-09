@@ -2,7 +2,12 @@ import React from 'react';
 import { Heart, Feather, Laugh, MessageCircle } from 'lucide-react';
 
 type AIPersonalityType = 'romantic' | 'poetic' | 'funny' | 'sarcastic';
+/*
 
+Coded by Danielle Bagaforo Meer
+Lets Connect : https://www.linkedin.com/in/algorexph
+
+*/
 interface AIPersonalityCardProps {
   type: AIPersonalityType;
   title: string;

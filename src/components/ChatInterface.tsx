@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Heart, Sparkles, Laugh, MessageCircle } from 'lucide-react';
 import { generateAIResponse } from '../lib/gemini';
+/*
 
+Coded by Danielle Bagaforo Meer
+Lets Connect : https://www.linkedin.com/in/algorexph
+
+*/
 interface Message {
   id: string;
   text: string;

@@ -4,7 +4,12 @@ import AIPersonalityCard from './components/AIPersonalityCard';
 import SetupDialog from './components/SetupDialog';
 import ChatInterface from './components/ChatInterface';
 import { useState } from 'react';
+/*
 
+Coded by Danielle Bagaforo Meer
+Lets Connect : https://www.linkedin.com/in/algorexph
+
+*/
 type AIPersonality = 'romantic' | 'poetic' | 'funny' | 'sarcastic' | null;
 
 interface AISetup {
